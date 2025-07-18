@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="study.demo.dashboard.repository.DashboardRepository">
+	<select id="findByKey" parameterType="int" resultType="dashboard">
+		SELECT *
+		FROM dashboard d
+		WHERE d.key = #{key}
+	</select>
+
+	<select id="findAll" resultType="dashboard">
+		SELECT *
+		FROM dashboard d
+	</select>
+</mapper>

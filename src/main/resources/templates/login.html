@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ✅ CSRF 토큰 정보 포함 -->
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="card card-default mt-4 text-center" style="max-width: 400px;">
+                <div class="card-body">
+                    <div class="row">
+                        <h6 class="card-title">SNS 계정으로 로그인</h6>
+                        <div>
+
+                        </div>
+                        <div class="mb-2">
+                            <a th:href="@{/oauth2/authorization/google}">
+                                <img th:width="200" th:src="@{/icon/google_web_light_sq_ctn.png}" alt="google login button">
+                            </a>
+                        </div>
+                        <div class="mb-2">
+                            <a th:href="@{/oauth2/authorization/naver}">
+                                <img th:width="200" th:src="@{/icon/naver_btnG_official.png}" alt="naver login button">
+                            </a>
+                        </div>
+                        <div>
+                            <a th:href="@{/oauth2/authorization/kakao}">
+                                <img th:width="200" th:src="@{/icon/kakao_login_large_narrow.png}" alt="kakao login button">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+@import url('../font/pretendard.css');
+
+html, body {
+    font-family: 'Pretendard', sans-serif;
+}
