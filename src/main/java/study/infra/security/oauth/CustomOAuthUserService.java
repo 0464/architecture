@@ -22,11 +22,15 @@ public class CustomOAuthUserService extends DefaultOAuth2UserService {
 
         OAuth2User oAuth2User = super.loadUser(userRequest);
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        // 사용자 정보를 추상화한 LoginUser 객체 생성
+        // 사용자 정보를 추상화한 객체 생성
         OAuth2UserInfo oAuth2UserInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(registrationId, oAuth2User.getAttributes()); // 팩토리에서 소셜 별 각각 구현
-        // 세션에 저장
-        session.setAttribute("loginUser", oAuth2UserInfo);
 
-        return oAuth2UserInfo;
+        // OAuth2 ID를 제외하고 UUID를 추가한 세션용 User 객체 생성
+        User loginUser = new User(oAuth2UserInfo);
+
+        // 세션에 저장
+        session.setAttribute("loginUser", loginUser);
+
+        return loginUser;
     }
 }

@@ -26,7 +26,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/", "/login**", "/css/**", "/font/**", "/js/**", "/icon/**", "/api/**").permitAll() // public 경로
+                        .requestMatchers("/", "/login**", "/css/**", "/font/**", "/js/**", "/icon/**").permitAll() // public 경로
                         .anyRequest().authenticated() // 나머지는 인증 필요
                 )
                 .requestCache(cache -> cache.requestCache(requestCache()))

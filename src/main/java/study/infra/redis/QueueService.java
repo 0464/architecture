@@ -87,6 +87,17 @@ public class QueueService {
         // 대기순번 큐에서 사라졌어도, 사전 등록된 허용 목록에서 검증
         Boolean allowed = redisTemplate.opsForSet().isMember(ALLOWED_NAME, userId);
 
+        return Boolean.TRUE.equals(allowed);
+    }
+
+    /**
+     * 채팅 이동 결정 및 권한 목록 삭제
+     */
+    public boolean chat(String userId) {
+
+        // 대기순번 큐에서 사라졌어도, 사전 등록된 허용 목록에서 검증
+        Boolean allowed = redisTemplate.opsForSet().isMember(ALLOWED_NAME, userId);
+
         if (Boolean.TRUE.equals(allowed)) {
             redisTemplate.opsForSet().remove(ALLOWED_NAME, userId);
         }
